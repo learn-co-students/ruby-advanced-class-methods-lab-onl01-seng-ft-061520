@@ -33,11 +33,19 @@ class Song
     @@all.find{|song| song.name == name}
   end
 
-  def self.find_or_create_by_name
+  def self.find_or_create_by_name(name)
+=begin if find by name is false .. create
+=end  else -- find by name  .. can i do this using a boolean operator??
+
+    if self.find_by_name(name) == nil
+      self.create_by_name(name)
+    else
+      self.find_by_name(name)
+    end 
   end
   
   def self.alphabetical
-    @@all.sort 
+    @@all.sort_by{|i| i.name}  
   end
 
   def self.new_from_filename
